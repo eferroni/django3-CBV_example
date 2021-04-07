@@ -1,0 +1,20 @@
+{% extends "basic_app/basic_app_base.html" %}
+{% block content%}
+  <h1>
+  {% if not form.instance.pk %}
+  Create a new School
+  {% else %}
+  Update a new School
+  {% endif %}
+  </h1>
+<form class="" action="" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" class="btn btn-primary" value="Save">
+  {% if not form.instance.pk %}
+  <a class="btn btn-secondary" href="{% url 'basic_app:list' %}">Cancel</a>
+  {% else %}
+  <a class="btn btn-secondary" href="{% url 'basic_app:detail' form.instance.pk %}">Cancel</a>
+  {% endif %}
+</form>
+{% endblock %}
